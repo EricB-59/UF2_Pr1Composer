@@ -1,0 +1,19 @@
+{
+    "name": "ericb/uf2_pr1composer",
+    "autoload": {
+        "psr-4": {
+            "Ericb\\Uf2Pr1composer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "EricB-59",
+            "email": "ebaenac59@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.8",
+        "intervention/image": "^3.9",
+        "ramsey/uuid": "^4.7"
+    }
+}
