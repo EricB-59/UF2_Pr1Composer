@@ -2,7 +2,7 @@
     "name": "ericb/uf2_pr1composer",
     "autoload": {
         "psr-4": {
-            "Ericb\\Uf2Pr1composer\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
