@@ -4,13 +4,15 @@ class Reparation
 {
     private $idReparation;
     private $idWorkshop;
+    private $nameWorkshop;
     private $registerDate;
     private $licensePlate;
 
-    function __construct($idReparation, $idWorkshop, $registerDate, $licensePlate)
+    function __construct($idReparation, $idWorkshop, $nameWorkshop,$registerDate, $licensePlate)
     {
         $this->idReparation = $idReparation;
         $this->idWorkshop = $idWorkshop;
+        $this->nameWorkshop = $nameWorkshop;
         $this->registerDate = $registerDate;
         $this->licensePlate = $licensePlate;
     }
@@ -24,14 +26,6 @@ class Reparation
     }
 
     /**
-     * @param mixed $idReparation
-     */
-    public function setIdReparation($idReparation): void
-    {
-        $this->idReparation = $idReparation;
-    }
-
-    /**
      * @return mixed
      */
     public function getIdWorkshop()
@@ -40,11 +34,11 @@ class Reparation
     }
 
     /**
-     * @param mixed $idWorkshop
+     * @return mixed
      */
-    public function setIdWorkshop($idWorkshop): void
+    public function getNameWorkshop()
     {
-        $this->idWorkshop = $idWorkshop;
+        return $this->nameWorkshop;
     }
 
     /**
@@ -55,13 +49,6 @@ class Reparation
         return $this->registerDate;
     }
 
-    /**
-     * @param mixed $registerDate
-     */
-    public function setRegisterDate($registerDate): void
-    {
-        $this->registerDate = $registerDate;
-    }
 
     /**
      * @return mixed
@@ -69,13 +56,5 @@ class Reparation
     public function getLicensePlate()
     {
         return $this->licensePlate;
-    }
-
-    /**
-     * @param mixed $licensePlate
-     */
-    public function setLicensePlate($licensePlate): void
-    {
-        $this->licensePlate = $licensePlate;
     }
 }

@@ -77,5 +77,3 @@
 </form>
 </body>
 </html>
-
-<?php
