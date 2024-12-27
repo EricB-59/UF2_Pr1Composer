@@ -19,7 +19,7 @@ class ControllerReparation
     {
         require_once '../Service/ServiceReparation.php';
         $service = new ServiceReparation();
-        $reparation = $service->getReparation($_POST['idReparation']);
+        $reparation = $service->getReparation($_POST['idReparation'], $_SESSION['role']);
         $this->updateRender($reparation);
     }
     public function insertReparation(): void

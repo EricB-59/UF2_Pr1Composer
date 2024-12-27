@@ -51,7 +51,7 @@ class ServiceReparation
         $conn->close();
     }
 
-    function getReparation($idReparation): Reparation | null
+    function getReparation($idReparation, $role): Reparation | null
     {
         $sql = "SELECT * FROM Workshop.Reparation WHERE idReparation = '" . $idReparation . "';";
         $conn = $this->connect();
@@ -66,18 +66,20 @@ class ServiceReparation
 
             $row = $result->fetch_assoc();
 
+            $carPicture = $row['carPicture'];
+
+            if ($role == 'client') {
+                $carPicture = $this->addPixelate($carPicture);
+            }
+
             $reparation = new Reparation(
                 $row['idReparation'],
                 $row['idWorkshop'],
                 $row['nameWorkshop'],
                 $row['registerDate'],
                 $row['licensePlate'],
-                $row['carPicture']
+                $carPicture
             );
-
-/*            if ($_SESSION['role'] == 'client') {
-
-            }*/
 
             $this->log->info("SELECT reparation successfully: " . $reparation->getIdReparation());
         } catch (Exception) {
@@ -149,6 +151,16 @@ class ServiceReparation
             $font->color('#FAE500');
             $font->stroke('#000000', 9);
         });
+
+        return base64_encode($image->encode());
+    }
+
+    function addPixelate($carPicture): string
+    {
+        $manager = new ImageManager(new Driver);
+        $image = $manager->read($carPicture, Base64ImageDecoder::class);
+
+        $image->pixelate(48);
 
         return base64_encode($image->encode());
     }
