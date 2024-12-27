@@ -2,59 +2,50 @@
 
 class Reparation
 {
-    private $idReparation;
-    private $idWorkshop;
-    private $nameWorkshop;
-    private $registerDate;
-    private $licensePlate;
+    private string $idReparation;
+    private mixed $idWorkshop;
+    private mixed $nameWorkshop;
+    private mixed $registerDate;
+    private mixed $licensePlate;
+    private mixed $carPicture;
 
-    function __construct($idReparation, $idWorkshop, $nameWorkshop,$registerDate, $licensePlate)
+    function __construct($idReparation, $idWorkshop, $nameWorkshop,$registerDate, $licensePlate, $carPicture)
     {
         $this->idReparation = $idReparation;
         $this->idWorkshop = $idWorkshop;
         $this->nameWorkshop = $nameWorkshop;
         $this->registerDate = $registerDate;
         $this->licensePlate = $licensePlate;
+        $this->carPicture = $carPicture;
     }
 
-    /**
-     * @return string
-     */
-    public function getIdReparation()
+    public function getIdReparation(): string
     {
         return $this->idReparation;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getIdWorkshop()
+    public function getIdWorkshop(): mixed
     {
         return $this->idWorkshop;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNameWorkshop()
+    public function getNameWorkshop(): mixed
     {
         return $this->nameWorkshop;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRegisterDate()
+    public function getRegisterDate(): mixed
     {
         return $this->registerDate;
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getLicensePlate()
+    public function getLicensePlate(): mixed
     {
         return $this->licensePlate;
+    }
+
+    public function getCarPicture()
+    {
+        return $this->carPicture;
     }
 }

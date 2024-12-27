@@ -24,6 +24,10 @@ class ControllerReparation
     }
     public function insertReparation(): void
     {
+        // Img to base64
+        $imgTmpName = $_FILES['carPicture']['tmp_name'];
+        $imageToBase64 = base64_encode(file_get_contents($imgTmpName));
+
         require_once '../Service/ServiceReparation.php';
         $service = new ServiceReparation();
         $reparation = $service->insertReparation(
@@ -31,6 +35,7 @@ class ControllerReparation
             $_POST['nameWorkshop'],
             $_POST['date'],
             $_POST['licensePlate'],
+            $imageToBase64
         );
         $this->updateRender($reparation);
     }

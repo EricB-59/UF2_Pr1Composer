@@ -4,7 +4,9 @@ session_start();
 
 use App\Model\Reparation;
 
-$_SESSION['role'] = $_GET['role'];
+if (isset($_GET['role'])) {
+    $_SESSION['role'] = $_GET['role'];
+}
 
 class ViewReparation {
     public function render(?Reparation $reparation): void
@@ -17,9 +19,10 @@ class ViewReparation {
             echo "<li><strong>Name Workshop:</strong> " . $reparation->getNameWorkshop() . "</li>";
             echo "<li><strong>Fecha de Registro:</strong> " . $reparation->getRegisterDate() . "</li>";
             echo "<li><strong>Placa del Vehículo:</strong> " . $reparation->getLicensePlate() . "</li>";
+            echo '<li><img src="data:image/png;base64, ' . $reparation->getCarPicture() . '" alt="carPicture" style="width: 400px"></li>';
             echo "</ul>";
         } else {
-            echo "<h1 class='message' style='color: red'>No reparation found</h1>";
+            echo "<h1 class='message' style='color: red'>PROBLEM WITH REPARATION</h1>";
         }
     }
 }
@@ -104,12 +107,11 @@ class ViewReparation {
 
         ul {
             list-style: none;
-            margin: 0;
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin: 0 0 20px;
             max-width: 400px;
             width: 100%;
         }
@@ -148,7 +150,7 @@ class ViewReparation {
 
 <!-- Formulario para insertar una reparación (solo para empleados) -->
 <?php if ($_SESSION['role'] === 'employee'): ?>
-    <form method="post" action="../Controller/ControllerReparation.php">
+    <form method="post" action="../Controller/ControllerReparation.php" enctype="multipart/form-data">
         <h1>INSERT REPARATION</h1>
         <label for="idWorkshop">ID WORKSHOP</label>
         <input type="number" name="idWorkshop" id="idWorkshop" placeholder="Enter Workshop ID" required>
@@ -161,6 +163,9 @@ class ViewReparation {
 
         <label for="licensePlate">LICENSE PLATE</label>
         <input type="text" name="licensePlate" id="licensePlate" placeholder="1234-XXX" required>
+
+        <label for="carPicture">CAR PICTURE</label>
+        <input type="file" name="carPicture" id="carPicture">
 
         <input type="submit" name="insertReparation" value="SEND">
     </form>

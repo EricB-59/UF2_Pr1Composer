@@ -6,7 +6,7 @@
     <title>Car Workshop</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: system-ui;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
@@ -72,6 +72,7 @@
             <option value="employee">Employee</option>
             <option value="client">Client</option>
         </select>
+
     </label>
     <button type="submit">Submit</button>
 </form>
