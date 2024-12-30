@@ -11,6 +11,7 @@ if (isset($_GET['role'])) {
 class ViewReparation {
     public function render(?Reparation $reparation): void
     {
+        echo "<div class='container'>";
         if ($reparation != null) {
             echo "<h2 class='message'>Reparation Details</h2>";
             echo "<ul>";
@@ -24,6 +25,7 @@ class ViewReparation {
         } else {
             echo "<h1 class='message' style='color: red'>PROBLEM WITH REPARATION</h1>";
         }
+        echo "</div>";
     }
 }
 ?>
@@ -40,11 +42,12 @@ class ViewReparation {
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             color: #333;
+            gap: 20px;
         }
 
         h2 {
